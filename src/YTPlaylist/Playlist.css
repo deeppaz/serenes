@@ -1,0 +1,6 @@
+.PlaylistContainer {
+    position: fixed;
+    left: 37%;
+    bottom: 48%;
+    block-size: 39px;
+}

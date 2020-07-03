@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import BGifs from '../data/BGif.json';
-//style
+import Playlist from '../YTPlaylist/Playlist';
 import './Serenes.css';
 
 class Serenes extends Component {
@@ -35,6 +35,7 @@ class Serenes extends Component {
                     }}
                     alt="bgifs"
                 />
+                <Playlist />
             </div>
         )
     }
