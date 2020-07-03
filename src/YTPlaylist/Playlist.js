@@ -17,8 +17,8 @@ class Playlist extends Component {
             },
         };
         return (
-            <div style={{blockSize:"39px"}}>
-                <YouTube containerClassName="PlaylistContainer" videoId="2g811Eo7K8U" opts={opts} onReady={this._onReady} />
+            <div>
+                <iframe class="iframe" width="100%" height="465" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/346386776&amp;auto_play=true&amp;buying=false&amp;liking=false&amp;download=false&amp;sharing=false&amp;show_artwork=false&amp;show_comments=false&amp;show_playcount=true&amp;show_user=true&amp;hide_related=false&amp;visual=true&amp;start_track=0&amp;callback=true"></iframe>
             </div >
         )
     }
