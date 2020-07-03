@@ -1,10 +1,11 @@
 import React from 'react';
+import Serenes from './Serenes/Serenes';
 
 function App() {
   return (
-    <>
-      <h1>i never come down</h1>
-    </>
+    <div>
+      <Serenes />
+    </div>
   );
 }
 
