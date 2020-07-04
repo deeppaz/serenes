@@ -1,6 +1,11 @@
 .PlaylistContainer {
     position: fixed;
-    left: 37%;
-    bottom: 48%;
-    block-size: 39px;
+    top: 38%;
+    width: 15%;
+    min-height: 30%;
+    left: 42%;
+    mix-blend-mode: soft-light;
+}
+.PlaylistContainer :hover{
+    mix-blend-mode: normal;
 }
