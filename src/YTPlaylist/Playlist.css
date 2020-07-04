@@ -9,3 +9,16 @@
 .PlaylistContainer :hover{
     mix-blend-mode: normal;
 }
+
+.player-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    pointer-events: none;
+  }
+  
+  .react-player {
+    position: absolute;
+    top: 20%;
+    left: 34%;
+    border: 7px white solid;
+  }
