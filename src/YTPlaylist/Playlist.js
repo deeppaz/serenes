@@ -41,12 +41,14 @@ class Playlist extends Component {
                         >
                             <Player src="https://www.youtube.com/watch?v=CnAdbjG-A6c" className="media-player" />
                             <div className="media-controls">
-                                <PlayPause className="playButton"/>
-                                <CurrentTime className="currentTime"/>
+                                <PlayPause className="playButton" />
+                                <CurrentTime className="currentTime" />
                                 <SeekBar className="sliderTime" />
                                 <Duration className="duration" />
-                                <MuteUnmute className="soundToggle"/>
-                                <Volume className="volumeSlider" />
+                                <div className="volumeContainer">
+                                    <MuteUnmute className="soundToggle" />
+                                    <Volume className="volumeSlider" />
+                                </div>
                             </div>
                         </div>
                     )}
