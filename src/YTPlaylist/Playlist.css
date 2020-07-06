@@ -30,7 +30,7 @@
   padding: 1em 2em;
   background: none;
   color: inherit;
-  outline:none;
+  outline: none;
   vertical-align: middle;
   position: relative;
   z-index: 1;
@@ -38,7 +38,8 @@
 }
 
 .soundToggle {
-  background-image: url(https://image.flaticon.com/icons/svg/969/969617.svg);
+  background-image: url(../image/unmute.png);
+  background-size: 26px 28px;
   margin: 10px;
   display: inline-block;
   padding: 13px;
@@ -52,5 +53,18 @@
   overflow: hidden;
   color: transparent;
   font-size: 0;
-  outline:none;
+  outline: none;
+}
+
+.volumeSlider {
+  height: 3px;
+  transition: width 0.1s linear 0s;
+  contain: strict;
+}
+
+.sliderTime{
+  height: 3px;
+  transition: width 0.1s linear 0s;
+  contain: strict;
+  margin: 10px;
 }
