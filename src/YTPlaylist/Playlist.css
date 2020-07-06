@@ -1,24 +1,15 @@
-.PlaylistContainer {
-    position: fixed;
-    top: 38%;
-    width: 15%;
-    min-height: 30%;
-    left: 42%;
-    mix-blend-mode: soft-light;
-}
-.PlaylistContainer :hover{
-    mix-blend-mode: normal;
+.media-controls {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #282f31;
+  color: #fff;
+  position: fixed;
+  top: 42%;
+  left: 39%;
+  min-width: 22%;
 }
 
-.player-wrapper {
-    position: relative;
-    padding-top: 56.25%;
-    pointer-events: none;
-  }
-  
-  .react-player {
-    position: absolute;
-    top: 20%;
-    left: 34%;
-    border: 7px white solid;
-  }
+.media-player {
+  visibility: hidden;
+}
