@@ -8,11 +8,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  display: flex;
+  transform: translate(-50%, -50%);
+  display: grid;
   align-items: center;
-  background-color: #282f31;
-  color: #a35161;
+  background-color: #282f31c5;
+  border-radius: 10px;
+  color: #fcfcfc;
   min-width: 22%;
 }
 
@@ -20,22 +21,26 @@
   visibility: hidden;
 }
 
-.saat{
+.saat {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style: none;
   outline: none;
-  font-family: Hardpixel,serif;
+  font-family: Hardpixel, serif;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   text-align: center;
-    user-select: none;
-    color: white;
+  user-select: none;
+  color: white;
 }
+
 .volumeContainer {
-  margin: 10px;
+  position: absolute;
+  right: 0px;
+  margin: 1em 25px 0px 0px;
+  top: 51px;
   background-color: #313a3c;
   border-radius: 10px;
   box-shadow: 0px 0px 0px 5px #2a3133;
@@ -43,8 +48,9 @@
 
 .playButton {
   float: left;
-  min-width: 150px;
-  max-width: 250px;
+  font-family: Hardpixel, serif;
+  min-width: 115px;
+  max-width: 200px;
   display: block;
   margin: 1em;
   padding: 1em 2em;
@@ -54,7 +60,10 @@
   vertical-align: middle;
   position: relative;
   z-index: 1;
-  border: 1px solid;
+  border: 1px solid #282f31;
+  background-color: #313a3c;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px 5px #2a3133;
 }
 
 .soundToggle {
@@ -101,9 +110,18 @@
   contain: strict;
 }
 
-.sliderTime{
+.currentTime {
+  font-family: Hardpixel, serif;
+}
+
+.sliderTime {
   height: 3px;
   transition: width 0.1s linear 0s;
   contain: strict;
   margin: 10px;
+}
+
+.duration {
+  text-align: end;
+  font-family: Hardpixel, serif;
 }

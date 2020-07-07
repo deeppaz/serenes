@@ -3,11 +3,11 @@ import { Media, Player, controls } from 'react-media-player'
 import './Playlist.css';
 
 class Playlist extends Component {
-    state={
-        curTime : new Date().toLocaleString(),
-      }
-      componentWillMount(){
-        setInterval(function(){
+    state = {
+        curTime: new Date().toLocaleString(),
+    }
+    componentWillMount() {
+        setInterval(function () {
             this.setState({
                 curTime: new Date().toLocaleString()
             })
@@ -24,7 +24,7 @@ class Playlist extends Component {
         } = controls
         return (
             <div>
-                <h1 className="saat">{this.state.curTime}</h1>
+
                 <Media>
                     {mediaProps => (
                         <div
@@ -33,6 +33,7 @@ class Playlist extends Component {
                         >
                             <Player src="https://www.youtube.com/watch?v=CnAdbjG-A6c" className="media-player" />
                             <div className="media-controls">
+                                <h1 className="saat">{this.state.curTime}</h1>
                                 <PlayPause className="playButton" />
                                 <CurrentTime className="currentTime" />
                                 <SeekBar className="sliderTime" />
