@@ -9,7 +9,7 @@ class Playlist extends Component {
     componentWillMount() {
         setInterval(function () {
             this.setState({
-                curTime: new Date().toLocaleString()
+                curTime: new Date().toLocaleTimeString()
             })
         }.bind(this), 1000);
     }
