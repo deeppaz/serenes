@@ -3,7 +3,16 @@ import { Media, Player, controls } from 'react-media-player'
 import './Playlist.css';
 
 class Playlist extends Component {
-
+    state={
+        curTime : new Date().toLocaleString(),
+      }
+      componentWillMount(){
+        setInterval(function(){
+            this.setState({
+                curTime: new Date().toLocaleString()
+            })
+        }.bind(this), 1000);
+    }
     render() {
         const {
             PlayPause,
@@ -15,6 +24,7 @@ class Playlist extends Component {
         } = controls
         return (
             <div>
+                <h1 className="saat">{this.state.curTime}</h1>
                 <Media>
                     {mediaProps => (
                         <div
