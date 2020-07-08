@@ -13,20 +13,20 @@
 <p align="center">serenes player for listen to music while working or similar</p>
 
 <p align="center">
-  <img src="./docs/lofi-player.gif" width="350">
+  <img src="https://i.imgur.com/nxhNoSl.jpg" width="350">
 </p>
 
 # if you want to see
 
-Enjoy [clicking here](https://serenes.space/)
+Enjoy [serenes.space](https://serenes.space/)
 
 
-# How to clone project
+# how to clone project
 
 
 - Download by ZIP
 
-[ZIP](https://github.com/deeppaz/serenes/archive/master.zip)
+you can download by [ZIP](https://github.com/deeppaz/serenes/archive/master.zip)
 
 - or clone this repo
 
