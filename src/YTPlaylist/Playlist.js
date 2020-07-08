@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Media, Player, controls } from 'react-media-player'
+import YTPlaylists from '../data/playlist.json';
 import './Playlist.css';
 
 class Playlist extends Component {
-    state = {
-        curTime: new Date().toLocaleString(),
+    constructor() {
+        super();
+        this.state = {
+            YTPlaylist: Math.floor(Math.random() * YTPlaylists.length),
+            curTime: new Date().toLocaleString(),
+        };
     }
     componentWillMount() {
         setInterval(function () {
@@ -31,7 +36,7 @@ class Playlist extends Component {
                             className="media"
                             onKeyDown={(null, mediaProps)}
                         >
-                            <Player src="https://www.youtube.com/watch?v=CnAdbjG-A6c" className="media-player" />
+                            <Player src={YTPlaylists[this.state.YTPlaylist].musics} className="media-player" />
                             <div className="media-controls">
                                 <h1 className="saat">{this.state.curTime}</h1>
                                 <PlayPause className="playButton" />
