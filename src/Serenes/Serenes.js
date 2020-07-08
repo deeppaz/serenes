@@ -15,7 +15,7 @@ class Serenes extends Component {
             this.setState({
                 BGif: Math.floor(Math.random() * BGifs.length),
             });
-        }, 15000);
+        }, 10000);
     }
     render() {
         return (
