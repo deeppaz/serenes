@@ -13,7 +13,7 @@
 <p align="center">serenes player for listen to music while working or similar</p>
 
 <p align="center">
-  <img src="https://i.imgur.com/nxhNoSl.jpg" width="350">
+  <img src="https://i.imgur.com/nxhNoSl.jpg" width="100%">
 </p>
 
 # if you want to see
