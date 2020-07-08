@@ -16,7 +16,7 @@
   <img src="./docs/lofi-player.gif" width="350">
 </p>
 
-# Live On
+# if you want to see
 
 Enjoy [clicking here](https://serenes.space/)
 
