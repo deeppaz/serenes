@@ -26,9 +26,7 @@ Enjoy [clicking here](https://serenes.space/)
 
 - Download by ZIP
 
-```
 [ZIP](https://github.com/deeppaz/serenes/archive/master.zip)
-```
 
 - or clone this repo
 
@@ -37,17 +35,11 @@ git clone https://github.com/deeppaz/serenes.git
 ```
 ```
 cd serenes
-```
-
-```
 npm install
-```
-
-```
 npm start
 ```
 
-# 8BitDash
+# pixelarts
 
 You can find all background gifs here. feel free pushing the backgrounds you want to see on the player [gifs](https://github.com/deeppaz/serenes/blob/master/src/data/BGif.json)
 
