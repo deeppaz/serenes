@@ -103,7 +103,7 @@
 .volumeSlider {
   height: 3px;
   transition: width 0.1s linear 0s;
-  contain: strict;
+  /* contain: strict; */
 }
 
 .currentTime {
@@ -113,7 +113,7 @@
 .sliderTime {
   height: 3px;
   transition: width 0.1s linear 0s;
-  contain: strict;
+  /* contain: strict; */
   margin: 10px;
 }
 
