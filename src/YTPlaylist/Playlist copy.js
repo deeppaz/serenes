@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { Media, Player, controls } from 'react-media-player'
-import YTPlaylists from '../data/playlist.json';	
+// import YTPlaylists from '../data/playlist.json';
+import { YTPlaylists } from '../data/Playlist';
 import './Playlist.css';
 
+const getRandomFromRange = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+};
+const randomSongIndex = getRandomFromRange(0, YTPlaylists.length);
 
 class Playlist extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            YTPlaylist: Math.floor(Math.random() * YTPlaylists.length),	
             curTime: new Date().toLocaleString(),
         };
     }
-    
     componentWillMount() {
         setInterval(function () {
             this.setState({
@@ -22,6 +25,8 @@ class Playlist extends Component {
     }
 
     render() {
+        const randomSong = YTPlaylists[randomSongIndex];
+
         const {
             PlayPause,
             CurrentTime,
@@ -35,8 +40,9 @@ class Playlist extends Component {
 
                 <Media>
                         <>
-                            <Player autoPlay src={YTPlaylists[this.state.YTPlaylist].musics} className="media-player" />
+                            <Player autoPlay src={randomSong} className="media-player" />
                             <div className="media-controls">
+                                
                                 <h1 className="saat">{this.state.curTime}</h1>
                          
                                 <PlayPause className="playButton" />
