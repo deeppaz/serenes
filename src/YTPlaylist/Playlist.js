@@ -9,9 +9,17 @@ class Playlist extends Component {
         this.state = {
             YTPlaylist: Math.floor(Math.random() * YTPlaylists.length),
             curTime: new Date().toLocaleString(),
-            menuClass: 'soundToggleUnMute'
+            isToggleOn: true
         };
+        this.handleClick = this.handleClick.bind(this);
+
     }
+    
+    handleClick() {
+        this.setState(state => ({
+          isToggleOn: !state.isToggleOn
+        }));
+      }
 
     componentWillMount() {
         setInterval(function () {
@@ -21,13 +29,7 @@ class Playlist extends Component {
         }.bind(this), 1000);
     }
 
-    menuClick(e) {
-        const menuClass = this.state.menuClass === 'soundToggleUnMute' ? 'soundToggleMute' : 'soundToggleUnMute';
-        this.setState({ menuClass });
-      }
-
     render() {
-        const menuClassName = `${this.state.menuClass}`;
         const {
             PlayPause,
             CurrentTime,
@@ -50,7 +52,7 @@ class Playlist extends Component {
                             <SeekBar className="sliderTime" />
                             <Duration className="duration" />
                             <div className="volumeContainer">
-                                <MuteUnmute className={menuClassName} onClick={this.menuClick} />
+                                <MuteUnmute onClick={this.handleClick}  className={this.state.isToggleOn ? 'soundToggleUnMute' : 'soundToggleMute'}/>
                                 <Volume className="volumeSlider" />
                             </div>
                         </div>
