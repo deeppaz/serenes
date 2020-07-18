@@ -40,7 +40,6 @@ class Playlist extends Component {
         } = controls
         return (
             <div>
-
                 <Media>
                     <>
                         <Player autoPlay src={YTPlaylists[this.state.YTPlaylist].musics} className="media-player" />
