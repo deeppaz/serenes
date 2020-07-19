@@ -35,6 +35,8 @@
 
 .media-player {
   visibility: hidden;
+  display: none;
+  opacity: 0;
 }
 
 .saat {
