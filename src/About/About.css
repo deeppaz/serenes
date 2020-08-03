@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Hardpixel;
+    src: url("../assets/fonts/Hardpixel.OTF") format("opentype");
+  }
+  
+#options-container{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: 100px;
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+}
+#options{
+    display: flex;
+    align-items: center;
+}
+
+.pixel {
+    display: block;
+    position: relative;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: #293f4f;
+    border: none;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: Hardpixel, serif, cursive;
+    outline: none;
+    padding: 5px;
+}
+.pixel:hover {
+	background-color: #395468;
+}
+.pixel:active {
+	top: 10px;
+}
+.pixel:active::after {
+	top: 2px;
+}
