@@ -40,7 +40,7 @@ npm start
 
 # pixelarts
 
-You can find all background gifs here. feel free pushing the backgrounds you want to see on the player [gifs](https://github.com/deeppaz/serenes/blob/master/src/data/BGif.json)
+You can find all background gifs [here](https://github.com/deeppaz/serenes/blob/master/src/data/BGif.json). feel free pushing the backgrounds you want to see on the player 
 
 <br>
 <br>
