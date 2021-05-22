@@ -10,14 +10,14 @@ export class About extends Component {
     //i used like this for performance, i would like to use the target _blank method, but reactjs gets angry. soo, yes
     playlistOrGif() {
         window.open(
-            'https://github.com/deeppaz/serenes/issues',
+            'https://github.com/',
             '_blank'
         );
     }
 
     sourceCode() {
         window.open(
-            'https://github.com/deeppaz/serenes',
+            'https://github.com/',
             '_blank'
         );
     }
