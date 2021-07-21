@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="https://serenes.space/logo.png" width="150" />
+  <img src="https://serenes.vercel.app/logo.png" width="150" />
 </p>
 <h1 align="center">Serenes</h1>
 <p align="center">serenes player for listen to music while working or similar</p>
@@ -17,7 +17,7 @@
 
 # if you want to see
 
-Enjoy [serenes.space](https://serenes.space/)
+Enjoy [serenes.vercel.app](https://serenes.vercel.app/)
 
 
 # how to clone project
