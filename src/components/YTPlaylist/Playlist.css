@@ -1,6 +1,6 @@
 @font-face {
   font-family: Hardpixel;
-  src: url("../assets/fonts/Hardpixel.OTF") format("opentype");
+  src: url("../../assets/fonts/Hardpixel.OTF") format("opentype");
 }
 
 .media-controls {
@@ -121,7 +121,7 @@
 }
 
 .soundToggleUnMute {
-  background-image: url(../assets/image/unmute.png);
+  background-image: url(../../assets/image/unmute.png);
   background-size: 26px 28px;
   margin: 10px;
   display: inline-block;

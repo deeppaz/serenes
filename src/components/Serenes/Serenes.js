@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BGifs from '../data/BGif.json';
+import BGifs from '../../services/data/BGif.json';
 import Playlist from '../YTPlaylist/Playlist';
 import './Serenes.css';
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Media, Player, controls } from 'react-media-player'
-import YTPlaylists from '../data/playlist.json';
+import YTPlaylists from '../../services/data/playlist.json';
 import './Playlist.css';
 
 class Playlist extends Component {

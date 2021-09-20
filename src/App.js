@@ -1,6 +1,6 @@
 import React from 'react';
-import Serenes from './Serenes/Serenes';
-import About from './About/About';
+import Serenes from './components/Serenes/Serenes';
+import About from './components/About/About';
 
 function App() {
   return (
