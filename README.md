@@ -6,7 +6,7 @@
 
 # serenes V2 soon, diagram
 <p align="center">
-  <img src="https://serenes.vercel.app/serenes.jpg" width="100%">
+  <img src="https://serenes.vercel.app/serenes.png" width="100%">
 </p>
 
 # how to clone project
