@@ -1,11 +1,4 @@
 <p align="center">
-  <img  src="http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square" alt="Build Status" />
-  <img  src="https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen" alt="Dependency Status" />
-  <img  src="https://img.shields.io/badge/application-music_player-blue" alt="Application Type" />
-  <img  src="https://img.shields.io/github/license/Naereen/StrapDown.js.svg" alt="MIT Licence" />
-</p>
-
-<p align="center">
   <img src="https://serenes.vercel.app/logo.png" width="150" />
 </p>
 <h1 align="center">Serenes</h1>
@@ -53,5 +46,5 @@ You can find all background gifs [here](https://github.com/deeppaz/serenes/blob/
 
 <p align="center">Serenes <a href="https://github.com/deeppaz/serenes/blob/master/LICENSE">is MIT licensed</a></p>
 <p align="center">
-  <img src="https://serenes.space/logo.png" width="35" />
+  <img src="https://serenes.vercel.app/logo.png" width="35" />
 </p>
