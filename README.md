@@ -4,11 +4,7 @@
 <h1 align="center">Serenes</h1>
 <p align="center">serenes player for listen to music while working or similar</p>
 
-<p align="center">
-  <img src="https://i.imgur.com/nxhNoSl.jpg" width="100%">
-</p>
-
-# serenes diagram V2 soon
+# serenes V2 soon, diagram
 <p align="center">
   <img src="https://serenes.vercel.app/serenes.jpg" width="100%">
 </p>
