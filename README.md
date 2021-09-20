@@ -8,10 +8,10 @@
   <img src="https://i.imgur.com/nxhNoSl.jpg" width="100%">
 </p>
 
-# if you want to see
-
-Enjoy [serenes.vercel.app](https://serenes.vercel.app/)
-
+# serenes diagram V2 soon
+<p align="center">
+  <img src="https://serenes.vercel.app/serenes.jpg" width="100%">
+</p>
 
 # how to clone project
 
