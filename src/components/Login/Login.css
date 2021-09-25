@@ -1,0 +1,23 @@
+input {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  font-size: 2.5rem;
+  font-family: Hardpixel;
+  color: white;
+  border: 1px solid #282f31;
+  background-color: #313a3c;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px 5px #2a3133;
+}
+input:focus {
+  outline: none;
+}
+
+.back-button {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-size: 30px;
+}

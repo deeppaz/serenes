@@ -1,14 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { 
+  BrowserRouter, 
+  Route, 
+  Switch 
+} from "react-router-dom";
 
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import Anonymous from './components/Anonymous/Anonymous';
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import Anonymous from "./components/Anonymous/Anonymous";
 
 import Start from "./components/Start/Start";
 import Serenes from "./components/Serenes/Serenes";
 import About from "./components/About/About";
-
 
 function App() {
   return (

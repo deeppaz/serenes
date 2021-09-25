@@ -1,13 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import "./Login.css";
 
 export class Login extends Component {
-    render() {
-        return (
-            <div>
-                <h1>im login page</h1>
-            </div>
-        )
-    }
+
+  backLastPage(){
+    window.history.back();
+  }
+  render() {
+    return (
+      <div>
+        <button className="back-button" onClick={this.backLastPage}>Back</button>
+        <h1>Login Page</h1>
+        <input type="email" className="email-style" placeholder="Your email" />
+        <input type="password" placeholder="Password" />
+        <input type="submit" value="Login"/>
+      </div>
+    );
+  }
 }
 
-export default Login
+export default Login;
