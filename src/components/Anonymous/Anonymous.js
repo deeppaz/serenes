@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import Mods from "../Mods/Mods";
 
 export class Anonymous extends Component {
-    render() {
-        return (
-            <div>
-                im anonymous page
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Mods />
+      </div>
+    );
+  }
 }
 
-export default Anonymous
+export default Anonymous;
