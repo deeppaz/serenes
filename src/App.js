@@ -19,11 +19,11 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Start} />
-          <Route exact path="/play" component={Serenes} />
-          <Route exact path="/about" component={About} />
           <Route exact path="/signin" component={Login} />
           <Route exact path="/signup" component={Register} />
           <Route exact path="/anonymous" component={Anonymous} />
+          <Route exact path="/play" component={Serenes} />
+          <Route exact path="/about" component={About} />
         </Switch>
       </BrowserRouter>
     </div>
