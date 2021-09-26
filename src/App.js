@@ -1,4 +1,5 @@
 import React from "react";
+import { initializeApp } from "firebase/app";
 import { 
   BrowserRouter, 
   Route, 
@@ -13,17 +14,32 @@ import Start from "./components/Start/Start";
 import Serenes from "./components/Serenes/Serenes";
 import About from "./components/About/About";
 
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDJxHGhc8bqjfluv2M2z05WpBD3jpDRs7A",
+  authDomain: "serenes.firebaseapp.com",
+  projectId: "serenes",
+  storageBucket: "serenes.appspot.com",
+  messagingSenderId: "1057359758485",
+  appId: "1:1057359758485:web:bbb4732753b4359419879c",
+  measurementId: "G-XFNB99KKNV"
+};
+
+initializeApp(firebaseConfig);
+
+
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Start} />
-          <Route exact path="/signin" component={Login} />
-          <Route exact path="/signup" component={Register} />
-          <Route exact path="/anonymous" component={Anonymous} />
-          <Route exact path="/play" component={Serenes} />
-          <Route exact path="/about" component={About} />
+          <Route path="/signin" component={Login} />
+          <Route path="/signup" component={Register} />
+          <Route path="/anonymous" component={Anonymous} />
+          <Route path="/play" component={Serenes} />
+          <Route path="/about" component={About} />
         </Switch>
       </BrowserRouter>
     </div>

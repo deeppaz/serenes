@@ -1,13 +1,29 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
-const Register = () => {
+const Register = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   const onRegister = () => {
-    console.log(name, email, password);
+    setLoading(true);
+    const auth = getAuth();
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        updateProfile(auth.currentUser, { displayName: name })
+          .then(() => history.push("/"))
+          .catch((e) => alert(e.message));
+      })
+      .catch((e) => alert(e.message))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -35,7 +51,11 @@ const Register = () => {
         placeholder="Password"
         style={{ fontFamily: "verdana" }}
       />
-      <input type="submit" value="Register" onClick={onRegister} />
+      <input
+        type="submit"
+        value={loading ? "creating user..." : "Sign Up"}
+        onClick={onRegister}
+      />
     </div>
   );
 };
