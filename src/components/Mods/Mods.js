@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { getAuth, signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import "./Mods.css";
 
@@ -9,8 +10,12 @@ import Random from "../../assets/image/icons/random.svg";
 
 const Mods = ({ history }) => {
   const logout = () => {
-    localStorage.removeItem("token");
-    history.push("/");
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("token");
+        history.push("/");
+      })
+      .catch((e) => alert(e.message));
   };
 
   useEffect(() => {
@@ -20,6 +25,9 @@ const Mods = ({ history }) => {
       history.push("/signin");
     }
   }, []);
+
+  const auth = getAuth();
+  const user = auth.currentUser;
 
   return (
     <div>
@@ -38,7 +46,7 @@ const Mods = ({ history }) => {
             >
               Welcome
             </small>
-            <h1>Francesco Moustache</h1>
+            <h1>{user && user.displayName}</h1>
             <button className="logout-button" onClick={logout}>
               Logout
             </button>
