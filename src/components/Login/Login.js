@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Login.css'
 import {
   getAuth,
@@ -10,6 +10,14 @@ const Login = ( {history} ) => {
   const [password, setPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      history.push('/mods')
+    }
+  },[])
 
   const onLogin = () => {
     const auth = getAuth();

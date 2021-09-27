@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -11,6 +11,14 @@ const Register = ({ history }) => {
   const [password, setPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      history.push('/mods')
+    }
+  },[])
 
   const onRegister = () => {
     setLoading(true);

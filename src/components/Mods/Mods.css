@@ -1,0 +1,93 @@
+
+.firstinfo,
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  max-height: 50%;
+  padding: 5px 5px 5px 5px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgb(0 0 0 / 20%);
+  position: relative;
+  overflow: hidden;
+}
+.card:after {
+  content: "";
+  display: block;
+  width: 190px;
+  height: 300px;
+  background: rgb(0 254 190 / 75%);
+  position: absolute;
+  animation: rotatemagic 0.75s cubic-bezier(0.425, 1.04, 0.47, 1.105) 1s both;
+}
+
+.firstinfo {
+  flex-direction: row;
+  z-index: 2;
+  position: relative;
+}
+.firstinfo img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+.firstinfo .profileinfo {
+  padding: 0px 20px;
+}
+.firstinfo .profileinfo h1 {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  font-size: 1.8em;
+}
+
+.firstinfo .profileinfo .logout-button {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    font-size: 20px;
+    font-family: Hardpixel;
+    color: #313a3c;
+    border: 1px solid #41fecf;
+    background-color: #41fecf;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px 5px #c4c6c6 !important;
+    cursor: pointer;
+}
+
+@keyframes animatop {
+  0% {
+    opacity: 0;
+    bottom: -500px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+@keyframes animainfos {
+  0% {
+    bottom: 10px;
+  }
+  100% {
+    bottom: -42px;
+  }
+}
+@keyframes rotatemagic {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+    top: -24px;
+    left: -253px;
+  }
+  100% {
+    transform: rotate(-30deg);
+    top: -24px;
+    left: -78px;
+  }
+}
