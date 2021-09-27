@@ -24,3 +24,23 @@ input:focus {
 .password-input {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.already-has-account {
+  font-size: 20px !important;
+  max-width: 50% !important;
+  height: 50% !important;
+  font-family: Hardpixel;
+  color: black !important;
+  border: 1px solid #efefef !important;
+  background-color: #efefef !important;
+  border-radius: 5px !important;
+  box-shadow: 0px 0px 0px 3px #000000 !important;
+}
+.already-has-account-p {
+  text-align: center;
+  padding-top: 20px !important;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 15px;
+}

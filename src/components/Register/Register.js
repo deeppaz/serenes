@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 const Register = ({ history }) => {
   const [name, setName] = useState("");
@@ -13,12 +14,12 @@ const Register = ({ history }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     if (token) {
-      history.push('/mods')
+      history.push("/mods");
     }
-  },[])
+  }, []);
 
   const onRegister = () => {
     setLoading(true);
@@ -27,7 +28,7 @@ const Register = ({ history }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         updateProfile(auth.currentUser, { displayName: name })
-          .then(() => history.push("/"))
+          .then(() => history.push("/signin"))
           .catch((e) => alert(e.message));
       })
       .catch((e) => alert(e.message))
@@ -36,7 +37,6 @@ const Register = ({ history }) => {
 
   return (
     <div>
-      <button className="back-button">Back</button>
       <h1>Register Page</h1>
       <input
         type="text"
@@ -57,13 +57,20 @@ const Register = ({ history }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
-        style={{ fontFamily: "verdana" }}
+        style={{ fontFamily: "verdana", fontSize:'38px' }}
       />
       <input
         type="submit"
         value={loading ? "creating user..." : "Sign Up"}
         onClick={onRegister}
       />
+      <div style={{ display: "block" }}>
+        <Link style={{ textDecoration: "none", color: "orange" }} to="/signin">
+          <p className="already-has-account-p">
+            so do you already have account?
+          </p>
+        </Link>
+      </div>
     </div>
   );
 };
