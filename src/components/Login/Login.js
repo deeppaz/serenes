@@ -1,22 +1,54 @@
-import React, { Component } from "react";
-import "./Login.css";
+import React, { useState } from "react";
+import './Login.css'
+import {
+  getAuth,
+  signInWithEmailAndPassword
+} from "firebase/auth";
 
-export class Login extends Component {
+const Login = ( {history} ) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  backLastPage(){
-    window.history.back();
-  }
-  render() {
-    return (
-      <div>
-        <button className="back-button" onClick={this.backLastPage}>Back</button>
-        <h1>Login Page</h1>
-        <input type="email" className="email-style" placeholder="Your email" />
-        <input type="password" placeholder="Password" />
-        <input type="submit" value="Login"/>
-      </div>
-    );
-  }
-}
+  const [loading, setLoading] = useState(false);
+
+  const onLogin = () => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        localStorage.setItem('token', userCredential._tokenResponse.idToken);
+        history.push("/mods");
+      })
+      .catch((e) => alert(e.message))
+      .finally(() => setLoading(false));
+  };
+
+  return (
+    <div>
+      <button className="back-button">
+        Back
+      </button>
+      <h1>Login Page</h1>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="email-style"
+        placeholder="Your email"
+      />
+      <input
+        type="password"
+        value={password}
+        className="password-input"
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
+      <input
+        type="submit"
+        value={loading ? "youre logging on..." : "Login"}
+        onClick={onLogin}
+      />
+    </div>
+  );
+};
 
 export default Login;

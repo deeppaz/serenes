@@ -9,6 +9,7 @@ import {
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Anonymous from "./components/Anonymous/Anonymous";
+import Mods from "./components/Mods/Mods";
 
 import Start from "./components/Start/Start";
 import Serenes from "./components/Serenes/Serenes";
@@ -38,6 +39,7 @@ function App() {
           <Route path="/signin" component={Login} />
           <Route path="/signup" component={Register} />
           <Route path="/anonymous" component={Anonymous} />
+          <Route path="/mods" component={Mods} />
           <Route path="/play" component={Serenes} />
           <Route path="/about" component={About} />
         </Switch>

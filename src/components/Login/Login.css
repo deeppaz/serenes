@@ -21,3 +21,6 @@ input:focus {
   left: 20px;
   font-size: 30px;
 }
+.password-input {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
