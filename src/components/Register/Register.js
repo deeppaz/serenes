@@ -32,7 +32,22 @@ const Register = ({ history }) => {
       .then(() => {
         updateProfile(auth.currentUser, { displayName: name })
           .then(() => history.push("/signin"))
-          .catch((e) => notify.show(e.message));
+          .catch((e) => {
+            switch (e.code) {
+              case "auth/invalid-email":
+                notify.show("not an e-mail address or you left the e-mail blank");
+                break;
+              case "auth/internal-error":
+                notify.show("unexpected error or you didn't type the password")
+                break;  
+              case "auth/user-not-found":
+                notify.show("no way, there is no such user")
+                break;  
+              case "auth/weak-password":
+                notify.show("password should be at least 6 characters")
+                break;  
+            }
+          });
       })
       .catch((e) => notify.show(e.message))
       .finally(() => setLoading(false));

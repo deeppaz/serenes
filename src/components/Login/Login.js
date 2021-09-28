@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
+import Notifications, { notify } from "react-notify-toast";
 
 import HomePage from "../../assets/image/icons/home.svg";
 import "./Login.css";
@@ -27,12 +28,25 @@ const Login = ({ history }) => {
         localStorage.setItem("token", userCredential._tokenResponse.idToken);
         history.push("/mods");
       })
-      .catch((e) => alert(e.message))
+      .catch((e) => {
+        switch (e.code) {
+          case "auth/invalid-email":
+            notify.show("not an e-mail address or you left the e-mail blank");
+            break;
+          case "auth/internal-error":
+            notify.show("unexpected error or you didn't type the password")
+            break;  
+          case "auth/user-not-found":
+            notify.show("no way, there is no such user")
+            break;  
+        }
+      })
       .finally(() => setLoading(false));
   };
 
   return (
     <div>
+      <Notifications />
       <h1>Login Page</h1>
       <Link to="/">
         {" "}
@@ -62,7 +76,14 @@ const Login = ({ history }) => {
         onClick={onLogin}
       />
       <div style={{ display: "block" }}>
-        <Link style={{ textDecoration: "none", color: "rgb(0 254 190 / 75%)", textShadow:"rgb(49 58 60 / 51%) 1px 1px 1px" }} to="/signup">
+        <Link
+          style={{
+            textDecoration: "none",
+            color: "rgb(0 254 190 / 75%)",
+            textShadow: "rgb(49 58 60 / 51%) 1px 1px 1px",
+          }}
+          to="/signup"
+        >
           <p className="already-has-account-p">
             don't you really have an account?
           </p>

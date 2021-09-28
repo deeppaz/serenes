@@ -47,7 +47,7 @@ function App() {
             exact
             path="/"
             component={() =>
-              !authCheck.currentUser ? <Start /> : <Mods />
+              !authCheck.currentUser ? <Start /> : <Redirect to="/mods" />
             }
           />
           <Route path="/signin" component={Login} />
