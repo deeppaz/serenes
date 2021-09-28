@@ -5,6 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { Link } from "react-router-dom";
+import Notification, {notify} from "react-notify-toast";
 
 import HomePage from "../../assets/image/icons/home.svg";
 
@@ -31,14 +32,15 @@ const Register = ({ history }) => {
       .then(() => {
         updateProfile(auth.currentUser, { displayName: name })
           .then(() => history.push("/signin"))
-          .catch((e) => alert(e.message));
+          .catch((e) => notify.show(e.message));
       })
-      .catch((e) => alert(e.message))
+      .catch((e) => notify.show(e.message))
       .finally(() => setLoading(false));
   };
 
   return (
     <div>
+      <Notification />
       <h1>Register Page</h1>
       <Link to="/">
         {" "}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./Login.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 
 import HomePage from "../../assets/image/icons/home.svg";
+import "./Login.css";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");

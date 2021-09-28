@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
-import "./Mods.css";
+import Notification, {notify} from "react-notify-toast";
 
+import "./Mods.css";
 //images
 import Chill from "../../assets/image/icons/chill.svg";
 import Hype from "../../assets/image/icons/energy.svg";
@@ -15,7 +16,7 @@ const Mods = ({ history }) => {
         localStorage.removeItem("token");
         history.push("/signin");
       })
-      .catch((e) => alert(e.message));
+      .catch((e) => notify.show(e.message));
   };
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const Mods = ({ history }) => {
 
   return (
     <div>
+      <Notification />
       <div className="card">
         <div className="firstinfo">
           <img src="https://serenes.vercel.app/logo.png" />

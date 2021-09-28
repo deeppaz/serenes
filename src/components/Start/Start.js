@@ -16,7 +16,7 @@ export class Start extends Component {
         <Link to="/anonymous" style={{ textDecoration: 'none' }}>
           <button>Anonymous</button>
         </Link>
-        <p>If you want to Listen immediately click to Anonymous button</p>
+        <p style={{ textDecoration: "none", color: "rgb(0 254 190 / 75%)", textShadow:"rgb(49 58 60 / 51%) 1px 1px 1px" }}>If you want to Listen immediately click to Anonymous button</p>
       </div>
     );
   }
