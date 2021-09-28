@@ -6,6 +6,8 @@ import {
 } from "firebase/auth";
 import { Link } from "react-router-dom";
 
+import HomePage from "../../assets/image/icons/home.svg";
+
 const Register = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,6 +40,13 @@ const Register = ({ history }) => {
   return (
     <div>
       <h1>Register Page</h1>
+      <Link to="/">
+        {" "}
+        <button className="back-button">
+          {" "}
+          <img src={HomePage} alt="home" width="50px" height="50px" />
+        </button>
+      </Link>
       <input
         type="text"
         value={name}
@@ -55,9 +64,9 @@ const Register = ({ history }) => {
       <input
         type="password"
         value={password}
+        className="password-input"
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
-        style={{ fontFamily: "verdana", fontSize:'38px' }}
       />
       <input
         type="submit"
@@ -65,7 +74,7 @@ const Register = ({ history }) => {
         onClick={onRegister}
       />
       <div style={{ display: "block" }}>
-        <Link style={{ textDecoration: "none", color: "orange" }} to="/signin">
+        <Link style={{ textDecoration: "none", color: "rgb(0 254 190 / 75%)", textShadow:"rgb(49 58 60 / 51%) 1px 1px 1px" }} to="/signin">
           <p className="already-has-account-p">
             so do you already have account?
           </p>

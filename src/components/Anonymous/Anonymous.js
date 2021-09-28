@@ -4,11 +4,18 @@ import { Link } from "react-router-dom";
 import Chill from "../../assets/image/icons/chill.svg";
 import Hype from "../../assets/image/icons/energy.svg";
 import Random from "../../assets/image/icons/random.svg";
+import HomePage from "../../assets/image/icons/home.svg";
 
 export class Anonymous extends Component {
   render() {
     return (
       <div>
+        <Link to="/">
+          {" "}
+          <button className="back-button">
+            <img src={HomePage} alt="home" width="50px" height="50px" />
+          </button>
+        </Link>
         <h1>Select your Mod</h1>
         <Link style={{ textDecoration: "none" }} to="/play">
           <button>

@@ -3,6 +3,8 @@ import "./Login.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 
+import HomePage from "../../assets/image/icons/home.svg";
+
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +20,7 @@ const Login = ({ history }) => {
   }, []);
 
   const onLogin = () => {
+    setLoading(true);
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -31,6 +34,13 @@ const Login = ({ history }) => {
   return (
     <div>
       <h1>Login Page</h1>
+      <Link to="/">
+        {" "}
+        <button className="back-button">
+          {" "}
+          <img src={HomePage} alt="home" width="50px" height="50px" />
+        </button>
+      </Link>
       <input
         type="email"
         value={email}
@@ -42,7 +52,7 @@ const Login = ({ history }) => {
         type="password"
         value={password}
         className="password-input"
-        style={{fontFamily: "verdana", fontSize:'38px'}}
+        style={{ fontFamily: "verdana", fontSize: "38px" }}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
       />
@@ -52,7 +62,7 @@ const Login = ({ history }) => {
         onClick={onLogin}
       />
       <div style={{ display: "block" }}>
-        <Link style={{ textDecoration: "none", color: "orange" }} to="/signup">
+        <Link style={{ textDecoration: "none", color: "rgb(0 254 190 / 75%)", textShadow:"rgb(49 58 60 / 51%) 1px 1px 1px" }} to="/signup">
           <p className="already-has-account-p">
             don't you really have an account?
           </p>

@@ -14,17 +14,31 @@ input:focus {
   outline: none;
 }
 
+@media screen and (max-width: 600px) {
+  input {
+    font-size: 1.7em;
+  }
+}
+
 .back-button {
   float: left;
   position: absolute;
   top: 0;
   left: 20px;
   font-size: 30px;
+  background-color: rgb(0 254 190 / 75%) !important;
 }
+
 .password-input {
+  font-size: 38px !important;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+@media screen and (max-width: 600px) {
+  .password-input {
+    font-size: 25px !important; 
+  }
+}
 .already-has-account {
   font-size: 20px !important;
   max-width: 50% !important;
