@@ -29,18 +29,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 function App() {
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const isLogginIn = () => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        localStorage.getItem("token", userCredential._tokenResponse.idToken);
-      })
-      .catch((e) => alert(e.message));
-  };
-
+  const authCheck = getAuth();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -49,7 +38,7 @@ function App() {
       setUser(user);
     });
   }, []);
-  
+
   return (
     <div>
       <BrowserRouter>
@@ -57,7 +46,9 @@ function App() {
           <Route
             exact
             path="/"
-            render={() => (!isLogginIn ? <Start /> : <Redirect to="/mods" />)}
+            component={() =>
+              !authCheck.currentUser ? <Start /> : <Mods />
+            }
           />
           <Route path="/signin" component={Login} />
           <Route path="/signup" component={Register} />

@@ -13,7 +13,7 @@ const Mods = ({ history }) => {
     signOut(auth)
       .then(() => {
         localStorage.removeItem("token");
-        history.push("/");
+        history.push("/signin");
       })
       .catch((e) => alert(e.message));
   };
