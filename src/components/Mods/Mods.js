@@ -57,18 +57,21 @@ const Mods = ({ history }) => {
         </div>
       </div>
       <h1>Select your Mod</h1>
-      <Link style={{ textDecoration: "none" }} to="/play">
+      <Link style={{ textDecoration: "none" }} to="/chill">
         <button>
           Chill <img width="50px" height="50px" src={Chill} alt="Chill" />
         </button>
       </Link>
-
+      <Link style={{ textDecoration: "none" }} to="/hype">        
       <button>
         Hype <img width="50px" height="50px" src={Hype} alt="Hype" />
       </button>
+      </Link>
+      <Link style={{ textDecoration: "none" }} to="/random">
       <button>
         Random <img width="50px" height="50px" src={Random} alt="Random" />
       </button>
+      </Link>
     </div>
   );
 };

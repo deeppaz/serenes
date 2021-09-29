@@ -44,3 +44,6 @@ You can find all background gifs [here](https://github.com/deeppaz/serenes/blob/
 <p align="center">
   <img src="https://serenes.vercel.app/logo.png" width="35" />
 </p>
+
+playlist: https://www.youtube.com/watch?v=dLmyp3xMsAo&list=PLwU43tJ71iG0YSdogQTqXBy36Bu7tQ7Ch
+hype: lofi hip hop upbeat

@@ -8,13 +8,17 @@ import Anonymous from "./components/Anonymous/Anonymous";
 import Mods from "./components/Mods/Mods";
 
 import Start from "./components/Start/Start";
-import Serenes from "./components/Serenes/Serenes";
+import Chill from "./components/Serenes/Chill";
+import Hype from "./components/Serenes/Hype";
+import Random from "./components/Serenes/Random";
+
 import About from "./components/About/About";
+
 import {
   getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
+  onAuthStateChanged
 } from "@firebase/auth";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDJxHGhc8bqjfluv2M2z05WpBD3jpDRs7A",
@@ -52,9 +56,12 @@ function App() {
           />
           <Route path="/signin" component={Login} />
           <Route path="/signup" component={Register} />
+
           <Route path="/anonymous" component={Anonymous} />
           <Route path="/mods" component={Mods} />
-          <Route path="/play" component={Serenes} />
+          <Route path="/chill" component={Chill} />
+          <Route path="/hype" component={Hype} />
+          <Route path="/random" component={Random} />
           <Route path="/about" component={About} />
         </Switch>
       </BrowserRouter>
