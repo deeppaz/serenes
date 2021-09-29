@@ -5,7 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { Link } from "react-router-dom";
-import Notification, {notify} from "react-notify-toast";
+import Notification, { notify } from "react-notify-toast";
 
 import HomePage from "../../assets/image/icons/home.svg";
 
@@ -31,31 +31,83 @@ const Register = ({ history }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         updateProfile(auth.currentUser, { displayName: name })
-          .then(() => history.push("/signin"))
+          .then(
+            () => history.push("/signin"),
+            notify.show("you registered, now login", "success")
+          )
           .catch((e) => {
             switch (e.code) {
               case "auth/invalid-email":
-                notify.show("not an e-mail address or you left the e-mail blank");
+                notify.show(
+                  "not an e-mail address or you left the e-mail blank",
+                  "error",
+                  3000
+                );
+                break;
+              case "auth/email-already-in-use":
+                notify.show(
+                  "this email already exists try another",
+                  "error",
+                  3000
+                );
                 break;
               case "auth/internal-error":
-                notify.show("unexpected error or you didn't type the password")
-                break;  
+                notify.show(
+                  "unexpected error or you didn't type the password",
+                  "error",
+                  3000
+                );
+                break;
               case "auth/user-not-found":
-                notify.show("no way, there is no such user")
-                break;  
+                notify.show("no way, there is no such user", "error", 3000);
+                break;
               case "auth/weak-password":
-                notify.show("password should be at least 6 characters")
-                break;  
+                notify.show(
+                  "password should be at least 6 characters",
+                  "error",
+                  3000
+                );
+                break;
             }
           });
       })
-      .catch((e) => notify.show(e.message))
+      .catch((e) => {
+        switch (e.code) {
+          case "auth/invalid-email":
+            notify.show(
+              "not an e-mail address or you left the e-mail blank",
+              "error",
+              3000
+            );
+            break;
+          case "auth/email-already-in-use":
+            notify.show("this email already exists try another", "error", 3000);
+            break;
+          case "auth/internal-error":
+            notify.show(
+              "unexpected error or you didn't type the password",
+              "error",
+              3000
+            );
+            break;
+          case "auth/user-not-found":
+            notify.show("no way, there is no such user", "error", 3000);
+            break;
+          case "auth/weak-password":
+            notify.show(
+              "password should be at least 6 characters",
+              "error",
+              3000
+            );
+            break;
+        }
+      })
       .finally(() => setLoading(false));
   };
 
   return (
     <div>
-      <Notification />
+      <Notification options={{ zIndex: 200, top: "50px" }} />
       <h1>Register Page</h1>
       <Link to="/">
         {" "}
@@ -91,7 +143,14 @@ const Register = ({ history }) => {
         onClick={onRegister}
       />
       <div style={{ display: "block" }}>
-        <Link style={{ textDecoration: "none", color: "rgb(0 254 190 / 75%)", textShadow:"rgb(49 58 60 / 51%) 1px 1px 1px" }} to="/signin">
+        <Link
+          style={{
+            textDecoration: "none",
+            color: "rgb(0 254 190 / 75%)",
+            textShadow: "rgb(49 58 60 / 51%) 1px 1px 1px",
+          }}
+          to="/signin"
+        >
           <p className="already-has-account-p">
             so do you already have account?
           </p>

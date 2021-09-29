@@ -15,8 +15,9 @@ const Mods = ({ history }) => {
       .then(() => {
         localStorage.removeItem("token");
         history.push("/signin");
+        notify.show("successfully logged out", "success", 3000)
       })
-      .catch((e) => notify.show(e.message));
+      .catch((e) => notify.show(e.message, "error", 3000));
   };
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const Mods = ({ history }) => {
 
   return (
     <div>
-      <Notification />
+      <Notification options={{zIndex: 200, top: '50px'}} />
       <div className="card">
         <div className="firstinfo">
           <img src="https://serenes.vercel.app/logo.png" />

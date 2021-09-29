@@ -27,26 +27,36 @@ const Login = ({ history }) => {
       .then((userCredential) => {
         localStorage.setItem("token", userCredential._tokenResponse.idToken);
         history.push("/mods");
+        notify.show("successfully logged in", "success", 3000)
       })
       .catch((e) => {
         switch (e.code) {
           case "auth/invalid-email":
-            notify.show("not an e-mail address or you left the e-mail blank");
+            notify.show(
+              "not an e-mail address or you left the e-mail blank",
+              "error",
+              3000
+            );
             break;
           case "auth/internal-error":
-            notify.show("unexpected error or you didn't type the password")
-            break;  
+            notify.show(
+              "unexpected error or you didn't type the password",
+              "error",
+              3000
+            );
+            break;
           case "auth/user-not-found":
-            notify.show("no way, there is no such user")
-            break;  
+            notify.show("no way, there is no such user", "error", 3000);
+            break;
         }
       })
       .finally(() => setLoading(false));
   };
 
+
   return (
     <div>
-      <Notifications />
+      <Notifications options={{ zIndex: 200, top: "50px" }} />
       <h1>Login Page</h1>
       <Link to="/">
         {" "}
