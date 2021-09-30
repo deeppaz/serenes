@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { initializeApp } from "firebase/app";
+import  "./services/config/firebaseconfig";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Login from "./components/Login/Login";
@@ -19,20 +19,8 @@ import {
   onAuthStateChanged
 } from "@firebase/auth";
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDJxHGhc8bqjfluv2M2z05WpBD3jpDRs7A",
-  authDomain: "serenes.firebaseapp.com",
-  projectId: "serenes",
-  storageBucket: "serenes.appspot.com",
-  messagingSenderId: "1057359758485",
-  appId: "1:1057359758485:web:bbb4732753b4359419879c",
-  measurementId: "G-XFNB99KKNV",
-};
-
-initializeApp(firebaseConfig);
-
 function App() {
+  console.log(process.env.API_KEY)
   const authCheck = getAuth();
   const [user, setUser] = useState(null);
 
