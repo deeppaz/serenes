@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import  "./services/config/firebaseconfig";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import React, { useEffect } from "react";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
@@ -14,43 +14,23 @@ import Random from "./components/Serenes/Random";
 
 import About from "./components/About/About";
 
-import {
-  getAuth,
-  onAuthStateChanged
-} from "@firebase/auth";
 
 function App() {
-  console.log(process.env.API_KEY)
-  const authCheck = getAuth();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
-  }, []);
-
   return (
     <div>
       <BrowserRouter>
         <Switch>
-          <Route
-            exact
-            path="/"
-            component={() =>
-              !authCheck.currentUser ? <Start /> : <Redirect to="/mods" />
-            }
-          />
-          <Route path="/signin" component={Login} />
-          <Route path="/signup" component={Register} />
+          <Route exact path="/" component={Start} />
+          <Route exact path="/signin" component={Login} />
+          <Route exact path="/signup" component={Register} />
+          <Route exact path="/mods" component={Mods} />
 
-          <Route path="/anonymous" component={Anonymous} />
-          <Route path="/mods" component={Mods} />
-          <Route path="/chill" component={Chill} />
-          <Route path="/hype" component={Hype} />
-          <Route path="/random" component={Random} />
-          <Route path="/about" component={About} />
+          <Route exact path="/anonymous" component={Anonymous} />
+          <Route exact path="/chill" component={Chill} />
+          <Route exact path="/hype" component={Hype} />
+          <Route exact path="/random" component={Random} />
+
+          <Route exact path="/about" component={About} />
         </Switch>
       </BrowserRouter>
     </div>

@@ -1,58 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import {
+  auth,
+  signInWithEmailAndPassword
+} from "../../services/config/firebaseconfig";
+import { useAuthState } from "react-firebase-hooks/auth";
 import Notifications, { notify } from "react-notify-toast";
 
 import HomePage from "../../assets/image/icons/home.svg";
 import "./Login.css";
 
-const Login = ({ history }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [loading, setLoading] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  const history = useHistory();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      history.push("/mods");
+    if (loading) {
+      //loading trigger
+      return;
     }
-  }, []);
-
-  const onLogin = () => {
-    setLoading(true);
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        localStorage.setItem("token", userCredential._tokenResponse.idToken);
-        history.push("/mods");
-        notify.show("successfully logged in", "success", 3000)
-      })
-      .catch((e) => {
-        switch (e.code) {
-          case "auth/invalid-email":
-            notify.show(
-              "not an e-mail address or you left the e-mail blank",
-              "error",
-              3000
-            );
-            break;
-          case "auth/internal-error":
-            notify.show(
-              "unexpected error or you didn't type the password",
-              "error",
-              3000
-            );
-            break;
-          case "auth/user-not-found":
-            notify.show("no way, there is no such user", "error", 3000);
-            break;
-        }
-      })
-      .finally(() => setLoading(false));
-  };
-
+    if (user) history.replace("/mods");
+  }, [user, loading]);
 
   return (
     <div>
@@ -83,7 +54,7 @@ const Login = ({ history }) => {
       <input
         type="submit"
         value={loading ? "youre logging on..." : "Login"}
-        onClick={onLogin}
+        onClick={() => signInWithEmailAndPassword(email, password)}
       />
       <div style={{ display: "block" }}>
         <Link

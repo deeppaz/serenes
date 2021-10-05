@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
-import { getAuth, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db, logout } from "../../services/config/firebaseconfig";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import Notification, {notify} from "react-notify-toast";
+import Notification, { notify } from "react-notify-toast";
 
 import "./Mods.css";
 //images
@@ -9,31 +11,62 @@ import Chill from "../../assets/image/icons/chill.svg";
 import Hype from "../../assets/image/icons/energy.svg";
 import Random from "../../assets/image/icons/random.svg";
 
-const Mods = ({ history }) => {
-  const logout = () => {
-    signOut(auth)
-      .then(() => {
-        localStorage.removeItem("token");
-        history.push("/signin");
-        notify.show("successfully logged out", "success", 3000)
+const Mods = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const [name, setName] = useState("");
+  const [mods, setMods] = useState("");
+  const history = useHistory();
+
+  const fetchUserName = async () => {
+    try {
+      const query = await db
+        .collection("users")
+        .where("uid", "==", user?.uid)
+        .get();
+      const data = await query.docs[0].data();
+      setName(data.name);
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    }
+  };
+
+  const selectCurrentMod = async () => {
+    db.collection("mods")
+      .get()
+      .then(function (querySnapshot) {
+        const data = querySnapshot.docs[0].data();
+        setMods(data.currentMod);
       })
-      .catch((e) => notify.show(e.message, "error", 3000));
+      .catch((err) => {
+        console.log("Error getting documents", err);
+      });
+  };
+
+  const changeCurrentMod = async () => {
+    console.log("currentmod: " + mods);
+    db.collection("mods")
+      .doc("gTmrEhJyU0CTB7WrEh3i")
+      .update({ currentMod: mods })
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    if (loading) return;
+    if (!user) return history.replace("/");
 
-    if (!token) {
-      history.push("/signin");
-    }
-  }, []);
-
-  const auth = getAuth();
-  const user = auth.currentUser;
+    fetchUserName();
+    selectCurrentMod();
+  }, [user, loading]);
 
   return (
     <div>
-      <Notification options={{zIndex: 200, top: '50px'}} />
+      <Notification options={{ zIndex: 200, top: "50px" }} />
       <div className="card">
         <div className="firstinfo">
           <img src="https://serenes.vercel.app/logo.png" />
@@ -47,9 +80,9 @@ const Mods = ({ history }) => {
                 paddingTop: "5px",
               }}
             >
-              Welcome
+              Welcome {mods}
             </small>
-            <h1>{user && user.displayName}</h1>
+            <h1>{name}</h1>
             <button className="logout-button" onClick={logout}>
               Logout
             </button>
@@ -57,21 +90,14 @@ const Mods = ({ history }) => {
         </div>
       </div>
       <h1>Select your Mod</h1>
-      <Link style={{ textDecoration: "none" }} to="/chill">
-        <button>
-          Chill <img width="50px" height="50px" src={Chill} alt="Chill" />
-        </button>
-      </Link>
-      <Link style={{ textDecoration: "none" }} to="/hype">        
-      <button>
-        Hype <img width="50px" height="50px" src={Hype} alt="Hype" />
-      </button>
-      </Link>
-      <Link style={{ textDecoration: "none" }} to="/random">
-      <button>
-        Random <img width="50px" height="50px" src={Random} alt="Random" />
-      </button>
-      </Link>
+      <div>
+        <input
+          type="text"
+          value={mods}
+          onChange={(e) => setMods(e.target.value)}
+        />
+        <input type="submit" onClick={() => changeCurrentMod()} />
+      </div>
     </div>
   );
 };

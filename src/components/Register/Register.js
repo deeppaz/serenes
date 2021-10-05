@@ -1,108 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useHistory } from "react-router-dom";
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { Link } from "react-router-dom";
+  auth,
+  registerWithEmailAndPassword,
+} from "../../services/config/firebaseconfig";
 import Notification, { notify } from "react-notify-toast";
 
 import HomePage from "../../assets/image/icons/home.svg";
 
-const Register = ({ history }) => {
+const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [loading, setLoading] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  const history = useHistory();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      history.push("/mods");
-    }
-  }, []);
+    if (loading) return;
+    if (user) history.replace("/mods");
+  }, [user, loading]);
 
   const onRegister = () => {
-    setLoading(true);
-    const auth = getAuth();
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        updateProfile(auth.currentUser, { displayName: name })
-          .then(
-            () => history.push("/signin"),
-            notify.show("you registered, now login", "success")
-          )
-          .catch((e) => {
-            switch (e.code) {
-              case "auth/invalid-email":
-                notify.show(
-                  "not an e-mail address or you left the e-mail blank",
-                  "error",
-                  3000
-                );
-                break;
-              case "auth/email-already-in-use":
-                notify.show(
-                  "this email already exists try another",
-                  "error",
-                  3000
-                );
-                break;
-              case "auth/internal-error":
-                notify.show(
-                  "unexpected error or you didn't type the password",
-                  "error",
-                  3000
-                );
-                break;
-              case "auth/user-not-found":
-                notify.show("no way, there is no such user", "error", 3000);
-                break;
-              case "auth/weak-password":
-                notify.show(
-                  "password should be at least 6 characters",
-                  "error",
-                  3000
-                );
-                break;
-            }
-          });
-      })
-      .catch((e) => {
-        switch (e.code) {
-          case "auth/invalid-email":
-            notify.show(
-              "not an e-mail address or you left the e-mail blank",
-              "error",
-              3000
-            );
-            break;
-          case "auth/email-already-in-use":
-            notify.show("this email already exists try another", "error", 3000);
-            break;
-          case "auth/internal-error":
-            notify.show(
-              "unexpected error or you didn't type the password",
-              "error",
-              3000
-            );
-            break;
-          case "auth/user-not-found":
-            notify.show("no way, there is no such user", "error", 3000);
-            break;
-          case "auth/weak-password":
-            notify.show(
-              "password should be at least 6 characters",
-              "error",
-              3000
-            );
-            break;
-        }
-      })
-      .finally(() => setLoading(false));
+    if (!name) notify.show("Please enter name");
+    registerWithEmailAndPassword(name, email, password);
   };
 
   return (
