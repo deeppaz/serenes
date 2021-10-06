@@ -93,3 +93,11 @@ body {
     left: -78px;
   }
 }
+
+.selected-mod{
+  color: #2bc48a;
+}
+
+.non-selected-mod{
+  color: white;
+}

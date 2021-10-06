@@ -44,10 +44,31 @@ const Mods = () => {
   };
 
   const changeCurrentMod = async () => {
-    console.log("currentmod: " + mods);
     db.collection("mods")
       .doc("gTmrEhJyU0CTB7WrEh3i")
-      .update({ currentMod: mods })
+      .update({ currentMod: "Chill" })
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const changeCurrentMod2 = async () => {
+    db.collection("mods")
+      .doc("gTmrEhJyU0CTB7WrEh3i")
+      .update({ currentMod: "Hype" })
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const changeCurrentMod3 = async () => {
+    db.collection("mods")
+      .doc("gTmrEhJyU0CTB7WrEh3i")
+      .update({ currentMod: "Random" })
       .then(() => {
         console.log("success");
       })
@@ -59,6 +80,7 @@ const Mods = () => {
   useEffect(() => {
     if (loading) return;
     if (!user) return history.replace("/");
+    if (error) return "Hata var";
 
     fetchUserName();
     selectCurrentMod();
@@ -69,6 +91,17 @@ const Mods = () => {
       <Notification options={{ zIndex: 200, top: "50px" }} />
       <div className="card">
         <div className="firstinfo">
+          <div
+            style={{
+              position: "absolute",
+              top: "140px",
+              bottom: "140px",
+              fontFamily: "Hardpixel",
+            }}
+          >
+            {" "}
+            Your current mod: {mods}{" "}
+          </div>
           <img src="https://serenes.vercel.app/logo.png" />
           <div className="profileinfo">
             <small
@@ -80,7 +113,7 @@ const Mods = () => {
                 paddingTop: "5px",
               }}
             >
-              Welcome {mods}
+              Welcome
             </small>
             <h1>{name}</h1>
             <button className="logout-button" onClick={logout}>
@@ -90,14 +123,23 @@ const Mods = () => {
         </div>
       </div>
       <h1>Select your Mod</h1>
-      <div>
-        <input
-          type="text"
-          value={mods}
-          onChange={(e) => setMods(e.target.value)}
-        />
-        <input type="submit" onClick={() => changeCurrentMod()} />
-      </div>
+
+      <Link style={{ textDecoration: "none" }} to="/chill">
+        <button className={mods == "Chill" ? "selected-mod" : "non-selected-mod"} value="Chill" onClick={() => changeCurrentMod(mods)}>
+          Chill <img width="50px" height="50px" src={Chill} alt="Chill" />
+        </button>
+      </Link>
+
+      <Link style={{ textDecoration: "none" }} to="/hype">
+        <button className={mods == "Hype" ? "selected-mod" : "non-selected-mod"} value="Hype" onClick={() => changeCurrentMod2(mods)}>
+          Hype <img width="50px" height="50px" src={Hype} alt="Hype" />
+        </button>
+      </Link>
+      <Link style={{ textDecoration: "none" }} to="/random">
+        <button className={mods == "Random" ? "selected-mod" : "non-selected-mod"} value="Random" onClick={() => changeCurrentMod3(mods)}>
+          Random <img width="50px" height="50px" src={Random} alt="Random" />
+        </button>
+      </Link>
     </div>
   );
 };
