@@ -9,6 +9,7 @@
     "dotenv": "^10.0.0",
     "firebase": "^8.9.1",
     "react": "^16.13.1",
+    "react-cl-audio-player": "^2.3.0",
     "react-dom": "^16.13.1",
     "react-firebase-hooks": "^3.0.4",
     "react-media-player": "^0.7.9",
