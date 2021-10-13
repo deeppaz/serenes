@@ -2,16 +2,32 @@ import React, { useEffect, useState } from "react";
 import AudioPlayer from "react-cl-audio-player";
 import HypePlaylist from "../../services/data/HypePlaylist";
 import data from "../../services/data/BGif.json";
+import "../../assets/css/public-css.css";
+import HomePage from "../../assets/image/icons/home.svg";
+import { Link } from "react-router-dom";
 
 const Hype = () => {
-  const rand = function () {
-    return Math.floor(Math.random() * data.length);
-  };
+  const [hypegifs, setHypegifs] = useState(0);
+
+  useEffect(() => {
+    const getArrayNumber = Math.floor(Math.random() * data.length);
+    const interval = setInterval(() => {
+      setHypegifs(getArrayNumber);
+    }, 11000);
+    return () => clearInterval(interval);
+  }, [hypegifs]);
 
   return (
-    <div>
+    <div className="playlist-body">
+      <Link to="/">
+        {" "}
+        <button className="back-button">
+          {" "}
+          <img src={HomePage} alt="home" width="50px" height="50px" />
+        </button>
+      </Link>
       <img
-        src={data[rand()].gifs}
+        src={data[hypegifs].gifs}
         style={{
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
