@@ -1,4 +1,3 @@
-
 .no-height {
   height: 0 !important;
 }
@@ -119,4 +118,44 @@
 .player-controls .player-btn {
   color: #d9d9d9;
   background-color: #414141;
+}
+
+.saat {
+  margin: 30px 0px 30px 0px;
+  padding: 0px 20px 0px 15px;
+  font-size: 130px;
+  font-family: Hardpixel, serif;
+  text-align: center;
+}
+.renkler {
+  color: #080723;
+  text-shadow: 3px 3px 0 #b1389f;
+}
+.renkler2 {
+  color: #010002;
+  text-shadow: 3px 3px 0 #27dfad;
+}
+.renkler3 {
+  color: #080723;
+  text-shadow: 3px 3px 0 #27dfad;
+}
+.renkler4 {
+  color: #27dfad;
+  text-shadow: 3px 3px 0 #080723;
+}
+.renkler5 {
+  color: black;
+  text-shadow: 3px 3px 0 white;
+}
+.renkler6 {
+  color: #010021;
+  text-shadow: 3px 3px 0 #ffee61;
+}
+.renkler7 {
+  color: #ffee61;
+  text-shadow: 3px 3px 0 #010021;
+}
+.renkler8 {
+  color: #28c891;
+  text-shadow: 3px 3px 0 #c6fff2;
 }
