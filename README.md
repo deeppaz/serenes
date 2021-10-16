@@ -47,3 +47,5 @@ You can find all background gifs [here](https://github.com/deeppaz/serenes/blob/
 
 playlist: https://www.youtube.com/watch?v=dLmyp3xMsAo&list=PLwU43tJ71iG0YSdogQTqXBy36Bu7tQ7Ch
 hype: lofi hip hop upbeat
+https://x2convert.com/en125
+https://www.npmjs.com/package/youtube-playlist

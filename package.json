@@ -12,7 +12,6 @@
     "react-cl-audio-player": "^2.3.0",
     "react-dom": "^16.13.1",
     "react-firebase-hooks": "^3.0.4",
-    "react-media-player": "^0.7.9",
     "react-notify-toast": "^0.5.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "3.4.1"

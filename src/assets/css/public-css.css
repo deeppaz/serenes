@@ -68,10 +68,10 @@
   top: -3px;
   right: -6px;
   content: "";
-  width: 15px;
-  height: 15px;
+  width: 15px !important;
+  height: 15px !important;
   border-radius: 50%;
-  background-color: #7748b5;
+  background-color: #f2e25e;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 5px 2px;
 }
 .player-options {
