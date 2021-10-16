@@ -10,6 +10,12 @@
   box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
   border: 5px solid #010021;
 }
+@media only screen and (max-width: 600px) {
+  .player-container {
+    max-width: 75% !important;
+  }
+}
+
 .player-cover {
   height: 160px;
   background-position: top center;
@@ -42,6 +48,13 @@
   background-color: #414141;
   border-radius: 40px;
 }
+@media only screen and (max-width: 600px) {
+  .player-progress-container {
+    max-width: 80% !important;
+  }
+}
+
+
 .player-progress-value {
   position: absolute;
   top: 0;
@@ -68,6 +81,12 @@
   width: 365px;
   margin: 0 auto;
 }
+
+@media only screen and (max-width: 600px) {
+  .player-options {
+    max-width: 100% !important;
+  }
+}
 .player-buttons {
   display: inline-flex;
   justify-content: space-between;
@@ -93,27 +112,81 @@
   color: #838c92;
 }
 .player-btn.big {
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
 }
 .player-btn.big i {
-  font-size: 36px;
+  font-size: 30px;
+}
+@media only screen and (max-width: 600px) {
+  .player-btn.big {
+    width: 50px;
+    height: 50px;
+  }
+  .player-btn.big i {
+    font-size: 20px;
+  }
 }
 .player-btn.medium {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 }
 .player-btn.medium i {
-  font-size: 15px;
+  font-size: 14px;
+}
+@media only screen and (max-width: 600px) {
+  .player-btn.medium {
+    width: 30px;
+    height: 30px;
+  }
+  .player-btn.medium i {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .player-btn.volume {
+    width: 30px !important;
+    height: 30px !important;
+    background-color: #2e276e;
+  }
+  .player-btn.repeat {
+    width: 30px !important;
+    height: 30px !important;
+    background-color: #2e276e;
+  }
+  .player-btn.random {
+    width: 30px !important;
+    height: 30px !important;
+    background-color: #2e276e;
+  }
+  .player-btn i {
+    font-size: 20px !important;
+  }
+}
+.player-btn i {
+  font-size: 20px;
+}
+.player-btn.repeat {
+  width: 35px;
+  height: 35px;
+  background-color: #2e276e;
+}
+.player-btn.random {
+  width: 35px;
+  height: 35px;
+  background-color: #2e276e;
 }
 .player-btn.volume {
-  width: 40px;
+  width: 35px;
+  height: 35px;
+  background-color: #2e276e;
 }
 .player-btn:disabled {
   opacity: 0.5;
 }
 .player-controls {
-  width: 180px;
+  /* width: 180px; */
+  width: 200px;
 }
 .player-controls .player-btn {
   color: #d9d9d9;
@@ -127,6 +200,16 @@
   font-family: Hardpixel, serif;
   text-align: center;
 }
+@media only screen and (max-width: 600px) {
+  .saat {
+    margin: 30px 0px 30px 0px;
+    padding: 20px 20px 10px 20px;
+    font-size: 70px;
+    font-family: Hardpixel, serif;
+    text-align: center;
+  }
+}
+
 .renkler {
   color: #080723;
   text-shadow: 3px 3px 0 #b1389f;

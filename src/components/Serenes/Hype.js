@@ -17,19 +17,25 @@ const Hype = () => {
     { colors: "saat renkler7" },
     { colors: "saat renkler8" },
   ];
-  const [hypegifs, setHypegifs] = useState(0);
+  const [hypegifs, setHypegifs] = useState([0]);
   const [date, setDate] = useState(new Date());
   const [randomCustomColor, setRandomCustomColor] = useState(0);
 
   useEffect(() => {
-    const getArrayNumber = Math.floor(Math.random() * data.length);
-    const getColorNumber = Math.floor(Math.random() * color.length);
     setInterval(() => {
-      setHypegifs(getArrayNumber);
-      setRandomCustomColor(color[getColorNumber].colors);
+      hypeGifs();
+      clockColor();
     }, 11000);
     setInterval(() => tick(), 1000);
-  }, [hypegifs]);
+  }, []);
+
+  function hypeGifs() {
+    setHypegifs(Math.floor(Math.random() * data.length));
+  }
+  
+  function clockColor() {
+    setRandomCustomColor(Math.floor(Math.random() * color.length));
+  }
 
   function tick() {
     setDate(new Date());
@@ -44,8 +50,7 @@ const Hype = () => {
           <img src={HomePage} alt="home" width="50px" height="50px" />
         </button>
       </Link>
-      <h1 className={randomCustomColor}>{date.toLocaleTimeString()}</h1>
-      {/* <h1 className={anecdotes[randomCustomColor]}>15:41:33</h1> */}
+      <h1 className={color[randomCustomColor].colors}>{date.toLocaleTimeString()}</h1>
       <img
         src={data[hypegifs].gifs}
         style={{
