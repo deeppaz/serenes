@@ -54,7 +54,6 @@
   }
 }
 
-
 .player-progress-value {
   position: absolute;
   top: 0;
@@ -242,3 +241,4 @@
   color: #28c891;
   text-shadow: 3px 3px 0 #c6fff2;
 }
+

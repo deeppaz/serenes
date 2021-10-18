@@ -28,6 +28,93 @@ input:focus {
   font-size: 30px;
   background-color: rgb(0 254 190 / 75%) !important;
 }
+.another-card {
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 30px;
+  background-color: rgb(0 254 190 / 75%) !important;
+  padding: 10px 20px 10px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+.card-name {
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Hardpixel";
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.card-status {
+  text-align: center;
+  padding-top: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 600px) {
+  .another-card {
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background-color:rgb(0 254 190 / 75%) !important;
+    padding: 0px 10px 10px 10px;
+    margin-top: 9px;
+    border-radius: 5px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .card-name {
+    text-align: center;
+    font-size: 13px;
+    font-family: "Hardpixel";
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .card-status {
+    text-align: center;
+    padding-top: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 10px;
+  }
+}
+.logout-button-alt {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  font-size: 15px;
+  font-family: Hardpixel;
+  color: white;
+  border: 1px solid #282f31;
+  background-color: #313a3c;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px 5px #2a3133;
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .logout-button-alt {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    font-size: 10px;
+    font-family: Hardpixel;
+    color: white;
+    border: 1px solid #282f31;
+    background-color: #313a3c;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px 5px #2a3133;
+    cursor: pointer;
+  }
+}
 
 .password-input {
   font-size: 38px !important;
@@ -36,7 +123,7 @@ input:focus {
 
 @media screen and (max-width: 600px) {
   .password-input {
-    font-size: 25px !important; 
+    font-size: 25px !important;
   }
 }
 .already-has-account {

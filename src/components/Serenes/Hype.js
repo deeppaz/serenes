@@ -32,7 +32,7 @@ const Hype = () => {
   function hypeGifs() {
     setHypegifs(Math.floor(Math.random() * data.length));
   }
-  
+
   function clockColor() {
     setRandomCustomColor(Math.floor(Math.random() * color.length));
   }
@@ -50,7 +50,9 @@ const Hype = () => {
           <img src={HomePage} alt="home" width="50px" height="50px" />
         </button>
       </Link>
-      <h1 className={color[randomCustomColor].colors}>{date.toLocaleTimeString()}</h1>
+      <h1 className={color[randomCustomColor].colors}>
+        {date.toLocaleTimeString()}
+      </h1>
       <img
         src={data[hypegifs].gifs}
         style={{
