@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db, logout } from "../../services/config/firebaseconfig";
 import AudioPlayer from "react-cl-audio-player";
 import HypePlaylist from "../../services/data/HypePlaylist";
 import data from "../../services/data/BGif.json";
@@ -17,17 +19,21 @@ const Hype = () => {
     { colors: "saat renkler7" },
     { colors: "saat renkler8" },
   ];
+  const [user, loading, error] = useAuthState(auth);
+  const [name, setName] = useState("");
   const [hypegifs, setHypegifs] = useState([0]);
   const [date, setDate] = useState(new Date());
-  const [randomCustomColor, setRandomCustomColor] = useState(0);
+  const [randomCustomColor, setRandomCustomColor] = useState([0]);
 
   useEffect(() => {
+    if (loading) return;
     setInterval(() => {
       hypeGifs();
       clockColor();
     }, 11000);
     setInterval(() => tick(), 1000);
-  }, []);
+    fetchUserName();
+  }, [user, loading]);
 
   function hypeGifs() {
     setHypegifs(Math.floor(Math.random() * data.length));
@@ -41,6 +47,24 @@ const Hype = () => {
     setDate(new Date());
   }
 
+  function refreshPage() {
+    window.location.reload(false);
+    // you shouldnt use like this but :d its okay for now 
+  }
+
+  const fetchUserName = async () => {
+    try {
+      const query = await db
+        .collection("users")
+        .where("uid", "==", user?.uid)
+        .get();
+      const data = await query.docs[0].data();
+      setName(data.name);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="playlist-body">
       <Link to="/">
@@ -50,6 +74,33 @@ const Hype = () => {
           <img src={HomePage} alt="home" width="50px" height="50px" />
         </button>
       </Link>
+      <div className="another-card">
+        <h1 className="card-name">
+          {name ? (
+           "your name: " +name
+          ) : (
+            <Link
+              style={{ textDecoration: "none", color: "#f2e25e" }}
+              to="/signin"
+            >
+              please log in
+            </Link>
+          )}
+        </h1>
+        <p className="card-status">
+          status:{" "}
+          <small style={{ fontSize: "15px", color: "#f2e25e" }}>
+            {name ? "online" : "anonim"}
+          </small>
+        </p>
+        {name ? (
+          <button className="logout-button-alt" onClick={() => { logout(); refreshPage();}}>
+            Logout
+          </button>
+        ) : (
+          ""
+        )}
+      </div>
       <h1 className={color[randomCustomColor].colors}>
         {date.toLocaleTimeString()}
       </h1>
