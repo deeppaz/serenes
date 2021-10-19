@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../../services/config/firebaseconfig";
 import { useHistory } from "react-router";
@@ -15,9 +15,12 @@ const Mods = () => {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const [mods, setMods] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
   const history = useHistory();
 
   const fetchUserName = async () => {
+    setIsLoading(true);
     try {
       const query = await db
         .collection("users")
@@ -29,6 +32,7 @@ const Mods = () => {
       console.error(err);
       alert("An error occured while fetching user data");
     }
+    setIsLoading(false);
   };
 
   const selectCurrentMod = async () => {
@@ -87,60 +91,79 @@ const Mods = () => {
   }, [user, loading]);
 
   return (
-    <div>
-      <Notification options={{ zIndex: 200, top: "50px" }} />
-      <div className="card">
-        <div className="firstinfo">
-          <div
-            style={{
-              position: "absolute",
-              top: "140px",
-              bottom: "140px",
-              fontFamily: "Hardpixel",
-            }}
-          >
-            {" "}
-            Your current mod: {mods}{" "}
+    <Fragment>
+      {isLoading ? (
+        <h1>yükleniyor</h1>
+      ) : (
+        <div>
+          <Notification options={{ zIndex: 200, top: "50px" }} />
+          <div className="card">
+            <div className="firstinfo">
+              <div
+                style={{
+                  position: "absolute",
+                  top: "140px",
+                  bottom: "140px",
+                  fontFamily: "Hardpixel",
+                }}
+              >
+                {" "}
+                Your current mod: {mods}{" "}
+              </div>
+              <img src="https://serenes.vercel.app/logo.png" />
+              <div className="profileinfo">
+                <small
+                  style={{
+                    fontWeight: "bolder",
+                    fontSize: "larger",
+                    display: "block",
+                    textAlign: "center",
+                    paddingTop: "5px",
+                  }}
+                >
+                  Welcome
+                </small>
+                <h1>{name}</h1>
+                <button className="logout-button" onClick={logout}>
+                  Logout
+                </button>
+              </div>
+            </div>
           </div>
-          <img src="https://serenes.vercel.app/logo.png" />
-          <div className="profileinfo">
-            <small
-              style={{
-                fontWeight: "bolder",
-                fontSize: "larger",
-                display: "block",
-                textAlign: "center",
-                paddingTop: "5px",
-              }}
+          <h1>Select your Mod</h1>
+
+          <Link style={{ textDecoration: "none" }} to="/chill">
+            <button
+              className={mods == "Chill" ? "selected-mod" : "non-selected-mod"}
+              value="Chill"
+              onClick={() => changeCurrentMod(mods)}
             >
-              Welcome
-            </small>
-            <h1>{name}</h1>
-            <button className="logout-button" onClick={logout}>
-              Logout
+              Chill <img width="50px" height="50px" src={Chill} alt="Chill" />
             </button>
-          </div>
+          </Link>
+
+          <Link style={{ textDecoration: "none" }} to="/hype">
+            <button
+              className={mods == "Hype" ? "selected-mod" : "non-selected-mod"}
+              value="Hype"
+              onClick={() => changeCurrentMod2(mods)}
+            >
+              Hype <img width="50px" height="50px" src={Hype} alt="Hype" />
+            </button>
+          </Link>
+          <Link style={{ textDecoration: "none" }} to="/random">
+            <button
+              className={mods == "Random" ? "selected-mod" : "non-selected-mod"}
+              value="Random"
+              onClick={() => changeCurrentMod3(mods)}
+            >
+              Random{" "}
+              <img width="50px" height="50px" src={Random} alt="Random" />
+            </button>
+          </Link>
         </div>
-      </div>
-      <h1>Select your Mod</h1>
-
-      <Link style={{ textDecoration: "none" }} to="/chill">
-        <button className={mods == "Chill" ? "selected-mod" : "non-selected-mod"} value="Chill" onClick={() => changeCurrentMod(mods)}>
-          Chill <img width="50px" height="50px" src={Chill} alt="Chill" />
-        </button>
-      </Link>
-
-      <Link style={{ textDecoration: "none" }} to="/hype">
-        <button className={mods == "Hype" ? "selected-mod" : "non-selected-mod"} value="Hype" onClick={() => changeCurrentMod2(mods)}>
-          Hype <img width="50px" height="50px" src={Hype} alt="Hype" />
-        </button>
-      </Link>
-      <Link style={{ textDecoration: "none" }} to="/random">
-        <button className={mods == "Random" ? "selected-mod" : "non-selected-mod"} value="Random" onClick={() => changeCurrentMod3(mods)}>
-          Random <img width="50px" height="50px" src={Random} alt="Random" />
-        </button>
-      </Link>
-    </div>
+      )}
+    </Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "../../services/config/firebaseconfig";
 import AudioPlayer from "react-cl-audio-player";
@@ -24,6 +24,8 @@ const Chill = () => {
   const [hypegifs, setHypegifs] = useState([0]);
   const [date, setDate] = useState(new Date());
   const [randomCustomColor, setRandomCustomColor] = useState([0]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     if (loading) return;
@@ -33,7 +35,7 @@ const Chill = () => {
     }, 11000);
     setInterval(() => tick(), 1000);
     fetchUserName();
-  }, [user, loading]);
+  }, [user, loading, data]);
 
   function hypeGifs() {
     setHypegifs(Math.floor(Math.random() * data.length));
@@ -53,6 +55,7 @@ const Chill = () => {
   }
 
   const fetchUserName = async () => {
+    setIsLoading(true);
     try {
       const query = await db
         .collection("users")
@@ -63,65 +66,72 @@ const Chill = () => {
     } catch (err) {
       console.error(err);
     }
+    setIsLoading(false);
   };
 
   return (
-    <div className="playlist-body">
-      <Link to="/">
-        {" "}
-        <button className="back-button">
+    <Fragment>
+      {isLoading ? (
+        <p>yükleniyor</p>
+      ): (
+        <div className="playlist-body">
+        <Link to="/">
           {" "}
-          <img src={HomePage} alt="home" width="50px" height="50px" />
-        </button>
-      </Link>
-      <div className="another-card">
-        <h1 className="card-name">
-          {name ? (
-           "your name: " +name
-          ) : (
-            <Link
-              style={{ textDecoration: "none", color: "#f2e25e" }}
-              to="/signin"
-            >
-              please log in
-            </Link>
-          )}
-        </h1>
-        <p className="card-status">
-          status:{" "}
-          <small style={{ fontSize: "15px", color: "#f2e25e" }}>
-            {name ? "online" : "anonim"}
-          </small>
-        </p>
-        {name ? (
-          <button className="logout-button-alt" onClick={() => { logout(); refreshPage();}}>
-            Logout
+          <button className="back-button">
+            {" "}
+            <img src={HomePage} alt="home" width="50px" height="50px" />
           </button>
-        ) : (
-          ""
-        )}
+        </Link>
+        <div className="another-card">
+          <h1 className="card-name">
+            {name ? (
+             "your name: " +name
+            ) : (
+              <Link
+                style={{ textDecoration: "none", color: "#f2e25e" }}
+                to="/signin"
+              >
+                please log in
+              </Link>
+            )}
+          </h1>
+          <p className="card-status">
+            status:{" "}
+            <small style={{ fontSize: "15px", color: "#f2e25e" }}>
+              {name ? "online" : "anonim"}
+            </small>
+          </p>
+          {name ? (
+            <button className="logout-button-alt" onClick={() => { logout(); refreshPage();}}>
+              Logout
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
+        <h1 className={color[randomCustomColor].colors}>
+          {date.toLocaleTimeString()}
+        </h1>
+        <img
+          src={data[hypegifs].gifs}
+          style={{
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center center",
+  
+            width: "100%",
+            height: "100%",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: -100,
+          }}
+          alt="bgifs"
+        />
+        <AudioPlayer songs={HypePlaylist} autoplay />
       </div>
-      <h1 className={color[randomCustomColor].colors}>
-        {date.toLocaleTimeString()}
-      </h1>
-      <img
-        src={data[hypegifs].gifs}
-        style={{
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center",
-
-          width: "100%",
-          height: "100%",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: -100,
-        }}
-        alt="bgifs"
-      />
-      <AudioPlayer songs={HypePlaylist} autoplay />
-    </div>
+      )}
+    </Fragment>
   );
 };
 
