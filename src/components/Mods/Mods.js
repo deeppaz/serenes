@@ -93,7 +93,7 @@ const Mods = () => {
   return (
     <Fragment>
       {isLoading ? (
-        <h1>yükleniyor</h1>
+          <h1>Loading...</h1>
       ) : (
         <div>
           <Notification options={{ zIndex: 200, top: "50px" }} />
