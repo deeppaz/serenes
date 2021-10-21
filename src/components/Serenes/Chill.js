@@ -72,7 +72,7 @@ const Chill = () => {
   return (
     <Fragment>
       {isLoading ? (
-        <p>yükleniyor</p>
+        <h1>Loading...</h1>
       ): (
         <div className="playlist-body">
         <Link to="/">
