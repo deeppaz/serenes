@@ -1,3 +1,7 @@
+# Working on v2. 
+# It is not ready yet, for the first version you can go to v1 and see.
+
+
 <p align="center">
   <img src="https://serenes.vercel.app/logo.png" width="150" />
 </p>
