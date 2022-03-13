@@ -1,5 +1,5 @@
 # Working on v2. 
-# It is not ready yet, for the first version you can go to v1 and see.
+# It is not ready yet, for the first version you can go to master branch and see.
 
 
 <p align="center">
@@ -49,7 +49,3 @@ You can find all background gifs [here](https://github.com/deeppaz/serenes/blob/
   <img src="https://serenes.vercel.app/logo.png" width="35" />
 </p>
 
-playlist: https://www.youtube.com/watch?v=dLmyp3xMsAo&list=PLwU43tJ71iG0YSdogQTqXBy36Bu7tQ7Ch
-hype: lofi hip hop upbeat
-https://x2convert.com/en125
-https://www.npmjs.com/package/youtube-playlist
